@@ -20,7 +20,6 @@
 		i2c3 = &i2c_3; /* I2C4 controller device */
 	};
 
-<<<<<<< HEAD
 	memory {
 		pstore_reserve_mem: pstore_reserve_mem_region@0 {
 			linux,reserve-contiguous-region;
@@ -29,18 +28,7 @@
 			reg = <0x0 0x8c300000 0x0 0x00100000>;
 			label = "pstore_reserve_mem";
 		};
-=======
-&memory {
-	pstore_reserve_mem: pstore_reserve_mem_region@0 {
-		linux,reserve-contiguous-region;
-		linux,reserve-region;
-		linux,remove-completely;
-		/* Hardboot: reserve 1MB of space
-		 * before ramoops address of <0x0 0x8c300000 0x0 0x00100000>
-		 */
-		reg = <0x0 0x8c200000 0x0 0x00200000>;
-		label = "pstore_reserve_mem";
->>>>>>> cc92e68... Implement kexec-hardboot
+
 	};
 };
 
