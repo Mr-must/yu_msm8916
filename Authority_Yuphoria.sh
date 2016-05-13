@@ -18,6 +18,7 @@
 KERNEL_DIR=$PWD
 KERN_IMG=$KERNEL_DIR/arch/arm64/boot/Image
 DTBTOOL=$KERNEL_DIR/dtbToolCM
+TOOLCHAIN_DIR=/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin
 BUILD_START=$(date +"%s")
 blue='\033[0;34m'
 cyan='\033[0;36m'
@@ -25,11 +26,12 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 nocol='\033[0m'
 # Modify the following variable if you want to build
-export CROSS_COMPILE="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/"
 export ARCH=arm64
-export SUBARCH=arm64
+export CCOMPILE=$CROSS_COMPILE
+export CROSS_COMPILE=aarch64-linux-android-
+export PATH=$PATH:/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin
 export KBUILD_BUILD_USER="AayushRd7"
-export KBUILD_BUILD_HOST="AutHoRiTy-PoWeR"
+export KBUILD_BUILD_HOST="Authority_Kernel"
 STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-strip"
 MODULES_DIR=$KERNEL_DIR/drivers/staging/prima
 OUT_DIR=/home/aayushrd7/yu_msm8916/Lettuce
@@ -39,7 +41,7 @@ compile_kernel ()
 rm -f $KERN_IMG
 make cyanogenmod_lettuce-64_defconfig
 echo -e 
-make -j3
+make -j5
 if ! [ -a $KERN_IMG ];
 then
 echo -e "$red Kernel Compilation failed! Fix the errors! $nocol"
